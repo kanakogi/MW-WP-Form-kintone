@@ -3,7 +3,7 @@
 /*
 Plugin Name: MW WP Form kintone
 Plugin URI: http://www.kigurumi.asia
-Description: MW WP Formからkintoneに入力します。
+Description: MW WP Formからkintoneに情報と登録します。
 Author: Nakashima Masahiro
 Version: 1.0.0
 Author URI: http://www.kigurumi.asia
