@@ -93,20 +93,24 @@ class MW_WP_Form_kintone_API
     {
 
         // kintoneに投げるデータを作成
-        // $record = array(
-        //     'Customer' => array(
-        //         'value' => 'Customerテスト10aaabb',
-        //     ),
-        //     'Title' => array(
-        //         'value' => '田中です',
-        //     ),
-        //     'Detail' => array(
-        //         'value' => 'でたいるだおaaa',
-        //     ),
-        // );
         $record = array();
         foreach ($values as $key => $value) {
-          $record[$key] = array('value' => $value);
+          //値が配列かどうかチェックする
+          if( !is_array($value) ){
+            //配列出ない場合はテキスト等なので入力
+            $record[$key] = array('value' => $value);
+          }else{
+            //配列はチェックボックスなのでデータを作成
+            foreach ($value as $key2 => $items) {
+              if( $key2 == 'data'){
+                $checkboxes = array();
+                foreach ($items as $item) {
+                  $checkboxes[] = $item;
+                }
+              }
+              $record[$key] = array('value' => $checkboxes);
+            }
+          }
         }
 
         $fields = array(
