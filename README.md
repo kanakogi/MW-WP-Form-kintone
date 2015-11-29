@@ -7,4 +7,16 @@ MW WP Formで設定した「name」と、kintoneで設定した「フィール�
 - ※ MW WP Formが同時にインストールされていることが必要です。
 - ※ kintoneのAPIを利用しているため、kintone側での設定も必要です。
 
+###kintoneの設定画面
+
+ ![画像](https://raw.githubusercontent.com/kanakogi/MW-WP-Form-kintone/master/images/01.png)
+ 
+###MW WP Formの設定画面
+ 
+ ![画像](https://raw.githubusercontent.com/kanakogi/MW-WP-Form-kintone/master/images/02.png)
+
+
+
+---
 License: GPLv2 or later
+
