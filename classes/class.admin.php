@@ -54,10 +54,10 @@ class MW_WP_Form_kintone_Admin
                 update_option(MWFK_PLUGIN_NAME, $options);
 
                 $updates->add('update', '保存しました');
-                set_transient('wptt-updates', $updates->get_error_messages(), 1);
+                set_transient('mwfk-updates', $updates->get_error_messages(), 1);
             } else {
                 $errors->add('error', 'エラーです');
-                set_transient('wptt-errors', $errors->get_error_messages(), 1);
+                set_transient('mwfk-errors', $errors->get_error_messages(), 1);
             }
         }
     }
@@ -67,7 +67,7 @@ class MW_WP_Form_kintone_Admin
      */
     public function admin_notices()
     {
-        if ($messages = get_transient('wptt-updates')): ?>
+        if ($messages = get_transient('mwfk-updates')): ?>
     <div class="updated">
         <ul>
             <?php foreach ($messages as $key => $message) : ?>
@@ -77,7 +77,7 @@ class MW_WP_Form_kintone_Admin
     </div>
     <?php endif ?>
 
- <?php if ($messages = get_transient('wptt-errors')): ?>
+ <?php if ($messages = get_transient('mwfk-errors')): ?>
     <div class="error">
         <ul>
             <?php foreach ($messages as $key => $message) : ?>

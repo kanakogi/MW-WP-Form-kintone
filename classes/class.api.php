@@ -40,6 +40,7 @@ class MW_WP_Form_kintone_API
      */
     public function mwform_auto_mail( $Mail, $values, $Data ){
       $this->post($values);
+
       return $Mail;
     }
 
@@ -62,27 +63,27 @@ class MW_WP_Form_kintone_API
     /**
      * kintoneからデータを取得.
      */
-    private function request_api($_url, $_fields, $_request = 'post')
+    private function request_api($url, $fields, $request = 'post')
     {
         //headerを取得
         $headers = $this->get_headers();
 
         $curl = curl_init();
-        if ($_request == 'post') {
+        if ($request == 'post') {
             //追加時
             curl_setopt($curl, CURLOPT_POST, true);
-        } elseif ($_request == 'put') {
+        } elseif ($request == 'put') {
             //更新時
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
-        } elseif ($_request == 'get') {
+        } elseif ($request == 'get') {
             //取得時
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
         }
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_URL, $_url);
+        curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($_fields));
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($fields));
         $response = curl_exec($curl);
         curl_close($curl);
 
@@ -95,12 +96,12 @@ class MW_WP_Form_kintone_API
         // kintoneに投げるデータを作成
         $record = array();
         foreach ($values as $key => $value) {
-          //値が配列かどうかチェックする
+          //チェックボックス対策で値が配列かどうかチェックする
           if( !is_array($value) ){
-            //配列出ない場合はテキスト等なので入力
+            //テキスト等はそのままでOK
             $record[$key] = array('value' => $value);
           }else{
-            //配列はチェックボックスなのでデータを作成
+            //配列はチェックボックスなのでデータを整形
             foreach ($value as $key2 => $items) {
               if( $key2 == 'data'){
                 $checkboxes = array();
