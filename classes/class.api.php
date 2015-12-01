@@ -92,7 +92,6 @@ class MW_WP_Form_kintone_API
 
     public function post($values)
     {
-
         // kintoneに投げるデータを作成
         $record = array();
         foreach ($values as $key => $value) {
@@ -102,14 +101,14 @@ class MW_WP_Form_kintone_API
             $record[$key] = array('value' => $value);
           }else{
             //配列はチェックボックスなのでデータを整形
-            foreach ($value as $key2 => $items) {
+            foreach ( $value as $key2 => $items ) {
               if( $key2 == 'data'){
                 $checkboxes = array();
                 foreach ($items as $item) {
                   $checkboxes[] = $item;
                 }
+                $record[$key] = array('value' => $checkboxes);
               }
-              $record[$key] = array('value' => $checkboxes);
             }
           }
         }

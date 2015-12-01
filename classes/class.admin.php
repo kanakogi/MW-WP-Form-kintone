@@ -1,10 +1,9 @@
 <?php
 class MW_WP_Form_kintone_Admin
 {
-    public $response = '';
 
     /**
-     * __construct.
+     * __construct
      */
     public function __construct()
     {
@@ -18,7 +17,7 @@ class MW_WP_Form_kintone_Admin
     }
 
     /**
-     * 管理画面に設定ページを追加.
+     * 管理画面に設定ページを追加
      */
     public function add_pages()
     {
@@ -35,7 +34,7 @@ class MW_WP_Form_kintone_Admin
     }
 
     /**
-     * POST時.
+     * POST時
      */
     public function admin_post()
     {
@@ -63,7 +62,7 @@ class MW_WP_Form_kintone_Admin
     }
 
     /**
-     * アップデート表示.
+     * アップデート表示
      */
     public function admin_notices()
     {
@@ -91,14 +90,12 @@ class MW_WP_Form_kintone_Admin
     }
 
     /**
-     * options_page.
+     * options_page
      */
     public function options_page()
     {
       $options = get_option(MWFK_PLUGIN_NAME);
         ?>
-
-<?php print_r($this->response) ?>
 
 <div class="wrap">
 <h2>kintone設定</h2>
